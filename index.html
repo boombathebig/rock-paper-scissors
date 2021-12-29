@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Conditionals: Task 4</title>
+   <!-- <link rel="stylesheet" href="../styles.css" /> -->
+  </head>
+  <body>
+  </body>
+<script>
+   // Define a variable for the computerChoice and the playerChoice
+   let computerSelection = computerPlay();
+   let playerSelection = prompt(`Please state your choice:Rock, Paper, or Scissors`);
+   // Creates a function that randomly selects rock, paper or scissors for computerChoice
+   function computerPlay() {
+    let rnd= Math.random();
+
+    if (rnd <= 0.33){
+           return `Rock`;
+       } else if (rnd <= 0.66){
+           return `Paper`;
+       } else {
+           return `Scissors`;
+       }
+   }
+   // create a function that Compares playerChoice vs. computerChoice & track result
+   function round() {
+       if (playerSelection === `Rock`){
+           if (computerSelection === `Rock`){
+               console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  It's a tie!`);
+           } else if (computerSelection === `Paper`){
+            console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Lose!`);
+           } else{
+            console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Win!`);
+           }
+
+       }else if(playerSelection ==="Paper") {
+        if (computerSelection === `Rock`){
+               console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Win!`);
+           } else if (computerSelection === `Paper`){
+            console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  It's a Tie!`);
+           } else{
+            console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Lose!`);
+           }
+       }else {
+        if (computerSelection === `Rock`){
+               console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Lose`);
+           } else if (computerSelection === `Paper`){
+            console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Win!`);
+           } else{
+            console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  It's a Tie!`);
+           }
+       }
+   }
+
+
+   // output the message to the player
+
+</script>
+</html>
