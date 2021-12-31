@@ -8,9 +8,9 @@
   <body>
   </body>
 <script>
-   // Define a variable for the computerChoice and the playerChoice
-   let computerSelection = computerPlay();
-   let playerSelection = prompt(`Please state your choice:Rock, Paper, or Scissors`);
+   // Define a variable for the computerScore and the playerScore
+   let playerScore= 0  
+   let computerScore= 0;
    // Creates a function that randomly selects rock, paper or scissors for computerChoice
    function computerPlay() {
     let rnd= Math.random();
@@ -23,38 +23,60 @@
            return `Scissors`;
        }
    }
-   // create a function that Compares playerChoice vs. computerChoice & track result
+   // ROUND FUNCTION, PROMPTS USER FOR INPUT, COMPARES TO RANDOMLY GENERATED RESPONSE FROM COMPUTER, ADDS TO OVERALL
+   // SCORE VARIABLES BELOW, PRINTS OUT THE CURRENT SCORE.
    function round() {
-       if (playerSelection === `Rock`){
+
+    playerSelection = prompt(`Please choose Rock, Paper, or Scissors`);
+    playerSelection= playerSelection.toLowerCase();
+    computerSelection = computerPlay();
+       if (playerSelection === `rock`){
            if (computerSelection === `Rock`){
-               console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  It's a tie!`);
+            console.log(`You chose ${playerSelection} and the computer chose ${computerSelection}.  It's a tie!`);
            } else if (computerSelection === `Paper`){
-            console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Lose!`);
+            console.log(`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Lose!`);
+            computerScore++;
            } else{
-            console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Win!`);
+            console.log(`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Win!`);
+            playerScore++;
            }
 
-       }else if(playerSelection ==="Paper") {
+       }else if(playerSelection ==="paper") {
         if (computerSelection === `Rock`){
-               console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Win!`);
+            console.log(`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Win!`);
+            playerScore++;
            } else if (computerSelection === `Paper`){
-            console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  It's a Tie!`);
+            console.log(`You chose ${playerSelection} and the computer chose ${computerSelection}.  It's a Tie!`);
            } else{
-            console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Lose!`);
+            console.log(`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Lose!`);
+            computerScore++;
            }
-       }else {
+        }else if(playerSelection=== `scissors`){
         if (computerSelection === `Rock`){
-               console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Lose`);
+            console.log(`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Lose`);
+            computerScore++;
            } else if (computerSelection === `Paper`){
-            console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Win!`);
+            console.log(`You chose ${playerSelection} and the computer chose ${computerSelection}.  You Win!`);
+            playerScore++
            } else{
-            console.log (`You chose ${playerSelection} and the computer chose ${computerSelection}.  It's a Tie!`);
+            console.log(`You chose ${playerSelection} and the computer chose ${computerSelection}.  It's a Tie!`);
            }
+       } else{
+           throw `You didn't put in Rock Paper or Scissors... try again...`;
        }
+       scoreAnnounce();
    }
+// loop, runs through round function 5x and reports out winner at the end. 
+   function game() {
+       for (let i = 0; i<5; i++) {
+           round();
+       }
+       (playerScore > computerScore) ? console.log(`Player wins best of 5!`) : console.log(`Computer wins best of 5!`);
+   }
+   // function for announcing total score
 
-
-   // output the message to the player
-
+   function scoreAnnounce() {
+   console.log(`The score is  PLAYER:${playerScore}       COMPUTER:${computerScore}`);
+   };
 </script>
 </html>
