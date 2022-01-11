@@ -19,7 +19,6 @@
    function round() {
 
     playerSelection = prompt(`Please choose Rock, Paper, or Scissors`);
-    playerSelection= playerSelection.toLowerCase();
     computerSelection = computerPlay();
        if (playerSelection === `rock`){
            if (computerSelection === `Rock`){
@@ -57,15 +56,16 @@
        }
        scoreAnnounce();
    }
-// loop, runs through round function 5x and reports out winner at the end. 
-   function game() {
-       for (let i = 0; i<5; i++) {
-           round();
-       }
-       (playerScore > computerScore) ? console.log(`Player wins best of 5!`) : console.log(`Computer wins best of 5!`);
-   }
-   // function for announcing total score
+// event listeners tying buttons (pictures) to player choices
+const buttons= document.querySelectorAll(".images");
+// identify all three buttons
 
-   function scoreAnnounce() {
-   console.log(`The score is  PLAYER:${playerScore}       COMPUTER:${computerScore}`);
-   };
+buttons[1].addEventListener("click", function() {
+    round();
+    console.log("");
+})
+// add event listeners for each one, on click assign the id of the image to the computer choice variable 
+// the event listener should also run the game. 
+
+// loop, runs through round function 5x and reports out winner at the end. 
+// function for announcing total score
